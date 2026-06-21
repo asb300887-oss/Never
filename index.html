@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Never | المتجر الرسمي</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+
+        /* إعدادات وتأثيرات السلاسة العامة */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* خلفية داكنة جداً ومريحة للعين */
+        body {
+            background-color: #070708;
+            color: #e2e8f0;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* إضافة توهج خلفي ناعم في الموقع للمظهر السيبراني */
+        body::before {
+            content: '';
+            position: absolute;
+            top: -10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 150, 255, 0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* شريط التنقل العلوي مع تأثير البلور (Blur) الاحترافي */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(10, 10, 12, 0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            z-index: 1000;
+            padding: 15px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand img {
+            height: 42px;
+            width: auto;
+            filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.5));
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            color: #00dcff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(0, 220, 255, 0.3);
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 6px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(0, 150, 255, 0.15);
+            color: #00dcff;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            box-shadow: inset 0 0 10px rgba(0, 150, 255, 0.2), 0 0 15px rgba(0, 150, 255, 0.1);
+        }
+
+        /* القسم الرئيسي (الواجهة الترحيبية) */
+        .hero-section {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 150px 20px 60px 20px;
+        }
+
+        .hero-logo {
+            width: 160px;
+            height: auto;
+            margin-bottom: 25px;
+            filter: drop-shadow(0 0 25px rgba(0, 220, 255, 0.35));
+            animation: float 4s ease-in-out infinite; /* أنيميشن حركة عائمة سلسة */
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-title {
+            font-size: 45px;
+            color: #ffffff;
+            margin-bottom: 18px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-title span {
+            color: #00dcff;
+            text-shadow: 0 0 15px rgba(0, 220, 255, 0.2);
+        }
+
+        .hero-desc {
+            font-size: 17px;
+            color: #94a3b8;
+            max-width: 580px;
+            margin-bottom: 40px;
+            line-height: 1.7;
+        }
+
+        .main-btn {
+            background: linear-gradient(135deg, #0076ff 0%, #00d4ff 100%);
+            color: white;
+            padding: 14px 45px;
+            font-size: 16px;
+            font-weight: 700;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 20px rgba(0, 150, 255, 0.3);
+        }
+
+        .main-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px #00dcff;
+        }
+
+        /* قسم قائمة التحميل المتكاملة */
+        .download-section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 70px;
+            color: #ffffff;
+            position: relative;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, #0076ff, #00d4ff);
+            border-radius: 2px;
+        }
+
+        /* ترتيب مريح وجذاب للبطاقات */
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* بطاقات بتأثير زجاجي معتم وبلور مريح للعين */
+        .app-card {
+            background: rgba(20, 20, 25, 0.5);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 35px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .app-card:hover {
+            background: rgba(25, 25, 35, 0.65);
+            border-color: rgba(0, 150, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 150, 255, 0.05);
+        }
+
+        .app-card-top {
+            margin-bottom: 30px;
+        }
+
+        .app-icon {
+            width: 75px;
+            height: 75px;
+            background-color: rgba(0, 150, 255, 0.06);
+            border-radius: 50%;
+            margin: 0 auto 25px auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 32px;
+            border: 1px solid rgba(0, 150, 255, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .app-card:hover .app-icon {
+            border-color: #00dcff;
+            background-color: rgba(0, 150, 255, 0.12);
+            box-shadow: 0 0 15px rgba(0, 220, 255, 0.2);
+        }
+
+        .app-name {
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+            letter-spacing: -0.3px;
+        }
+
+        .app-desc {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.6;
+        }
+
+        /* أزرار التحميل المريحة والسلسة */
+        .download-btn {
+            display: block;
+            background-color: rgba(255, 255, 255, 0.03);
+            color: #e2e8f0;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 12px 20px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .app-card:hover .download-btn {
+            border-color: #0096ff;
+            background-color: rgba(0, 150, 255, 0.1);
+            color: #00dcff;
+        }
+
+        .download-btn:hover {
+            background-color: #0096ff !important;
+            color: white !important;
+            box-shadow: 0 0 15px rgba(0, 150, 255, 0.4);
+        }
+
+        /* التذيل وسر ديسكورد */
+        footer {
+            background-color: #050506;
+            padding: 40px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            margin-top: 80px;
+        }
+
+        .discord-footer-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(88, 101, 242, 0.1);
+            color: #5865f2;
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            padding: 12px 35px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .discord-footer-btn:hover {
+            background-color: #5865f2;
+            color: white;
+            box-shadow: 0 0 20px rgba(88, 101, 242, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .copyright {
+            font-size: 13px;
+            color: #475569;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <img src="ChatGPT_Image_21_يونيو_2026__12_30_56_ص-removebg-preview.ico" alt="Never Logo">
+            <div class="logo">Never</div>
+        </div>
+        <nav>
+            <a href="#home" class="active" id="nav-home">القائمة الرئيسية</a>
+            <a href="#downloads" id="nav-downloads">قائمة التحميل</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero-section">
+        <img src="ChatGPT_Image_21_يونيو_2026__12_30_56_ص-removebg-preview.ico" alt="Never Official Logo" class="hero-logo">
+        <h1 class="hero-title">منصة <span>Never</span> الرسمية</h1>
+        <p class="hero-desc">المكان المعتمد لتحميل الأدوات والبرمجيات الحصرية بأعلى كفاءة وأمان مطلق ضد الحظر.</p>
+        <a href="#downloads" class="main-btn">تصفح قائمة التحميل</a>
+    </section>
+
+    <section id="downloads" class="download-section">
+        <h2 class="section-title">قائمة التحميل والملفات</h2>
+        
+        <div class="apps-grid">
+            
+            <div class="app-card">
+                <div class="app-card-top">
+                    <div class="app-icon">⚡</div>
+                    <div class="app-name">Never AutoClicker</div>
+                    <p class="app-desc">برنامج النقر التلقائي الاحترافي للكمبيوتر. يدعم تخصيص الأزرار والـ Hotkeys بشكل مستقل تماماً مع حماية كاملة وثبات فائق.</p>
+                </div>
+                <a href="https://www.mediafire.com/file/z66rv7ikxdk833t/Never_AutoClicker.exe/file" target="_blank" class="download-btn">تحميل التطبيق (Windows)</a>
+            </div>
+
+            <div class="app-card">
+                <div class="app-card-top">
+                    <div class="app-icon">🔗</div>
+                    <div class="app-name">Discord Webhook</div>
+                    <p class="app-desc">أداة متطورة لإرسال البيانات والتحكم في إشعارات السيرفر تلقائياً عبر الـ Webhooks بتنسيق مخصص وإعدادات متكاملة.</p>
+                </div>
+                <a href="https://cdn.discordapp.com/attachments/1495552490932797492/1496269376305758361/Webhook_Never_v2.rar?ex=6a37b632&is=6a3664b2&hm=b2098568dfe0ab587785dc31f235b6d092e33be70fdb4400b61dc5f5bc237c3e&" target="_blank" class="download-btn">تحميل الأداة (RAR)</a>
+            </div>
+
+            <div class="app-card">
+                <div class="app-card-top">
+                    <div class="app-icon">🚀</div>
+                    <div class="app-name">تطبيق قادم 2</div>
+                    <p class="app-desc">مساحة جاهزة ومخصصة لأداتك القادمة، يمكنك تعديل الاسم والبيانات من الكود مباشرة عند تجهيز الملف.</p>
+                </div>
+                <a href="#" class="download-btn" onclick="return false;" style="opacity: 0.3; cursor: not-allowed;">قريباً..</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <a href="https://discord.gg/RvfrmUYT7n" target="_blank" class="discord-footer-btn">
+            <span>Discord السيرفر الرسمي 🔗</span>
+        </a>
+        <div class="copyright">
+            &copy; 2026 Never. جميع الحقوق محفوظة.
+        </div>
+    </footer>
+
+    <script>
+        const nHome = document.getElementById('nav-home');
+        const nDown = document.getElementById('nav-downloads');
+        
+        nHome.addEventListener('click', () => {
+            nHome.classList.add('active');
+            nDown.classList.remove('active');
+        });
+        
+        nDown.addEventListener('click', () => {
+            nDown.classList.add('active');
+            nHome.classList.remove('active');
+        });
+
+        // تغيير شفافية الهيدر عند التمرير لأسفل لراحة العين
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.backgroundColor = 'rgba(7, 7, 8, 0.85)';
+                header.style.padding = '10px 50px';
+            } else {
+                header.style.backgroundColor = 'rgba(10, 10, 12, 0.7)';
+                header.style.padding = '15px 50px';
+            }
+        });
+    </script>
+
+</body>
+</html>
