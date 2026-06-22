@@ -64,7 +64,8 @@
 
         .brand img {
             height: 42px;
-            width: auto;
+            width: 42px;
+            object-fit: contain;
             filter: drop-shadow(0 0 10px rgba(0, 150, 255, 0.5));
         }
 
@@ -79,7 +80,7 @@
 
         nav {
             display: flex;
-            gap: 15px;
+            gap: 10px;
         }
 
         nav a {
@@ -87,7 +88,7 @@
             text-decoration: none;
             font-size: 15px;
             font-weight: 600;
-            padding: 8px 20px;
+            padding: 8px 18px;
             border-radius: 6px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
@@ -100,9 +101,16 @@
             box-shadow: inset 0 0 10px rgba(0, 150, 255, 0.2), 0 0 15px rgba(0, 150, 255, 0.1);
         }
 
+        /* تمييز زر التحذير في النافبار بلون تنبيهي ناعم */
+        nav a#nav-warning:hover, nav a#nav-warning.active {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            box-shadow: inset 0 0 10px rgba(239, 68, 68, 0.2), 0 0 15px rgba(239, 68, 68, 0.1);
+        }
+
         /* القسم الرئيسي (الواجهة الترحيبية) */
         .hero-section {
-            min-height: 90vh;
+            min-height: 95vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -113,7 +121,8 @@
 
         .hero-logo {
             width: 160px;
-            height: auto;
+            height: 160px;
+            object-fit: contain;
             margin-bottom: 25px;
             filter: drop-shadow(0 0 25px rgba(0, 220, 255, 0.35));
             animation: float 4s ease-in-out infinite;
@@ -145,6 +154,13 @@
             line-height: 1.7;
         }
 
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
         .main-btn {
             background: linear-gradient(135deg, #0076ff 0%, #00d4ff 100%);
             color: white;
@@ -164,11 +180,64 @@
             box-shadow: 0 6px 25px #00dcff;
         }
 
+        .main-btn.warning-btn {
+            background: linear-gradient(135deg, #dc2626 0%, #f87171 100%);
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+        }
+
+        .main-btn.warning-btn:hover {
+            box-shadow: 0 6px 25px #ef4444;
+        }
+
+        /* قسم التحذير المخصص */
+        .warning-section {
+            padding: 60px 20px;
+            max-width: 900px;
+            margin: 40px auto 0 auto;
+            scroll-margin-top: 100px;
+        }
+
+        .warning-box {
+            background: rgba(26, 15, 15, 0.4);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(239, 68, 68, 0.05);
+            animation: pulse-border 3s infinite alternate;
+        }
+
+        @keyframes pulse-border {
+            0% { border-color: rgba(239, 68, 68, 0.2); }
+            100% { border-color: rgba(239, 68, 68, 0.5); }
+        }
+
+        .warning-title {
+            color: #ef4444;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .warning-text {
+            color: #f1f5f9;
+            font-size: 16px;
+            line-height: 1.8;
+            font-weight: 600;
+        }
+
         /* قسم قائمة التحميل المتكاملة */
         .download-section {
-            padding: 100px 50px;
+            padding: 80px 50px;
             max-width: 1200px;
             margin: 0 auto;
+            scroll-margin-top: 100px;
         }
 
         .section-title {
@@ -225,24 +294,26 @@
             margin-bottom: 30px;
         }
 
-        .app-icon {
+        /* ستايل مخصص وموحد للصور والأيقونات المرفوعة لتظهر بوضوح ممتاز */
+        .app-icon-img {
             width: 75px;
             height: 75px;
-            background-color: rgba(0, 150, 255, 0.06);
+            object-fit: contain;
             border-radius: 50%;
             margin: 0 auto 25px auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 32px;
-            border: 1px solid rgba(0, 150, 255, 0.2);
+            display: block;
+            border: 2px solid rgba(0, 150, 255, 0.3);
+            background-color: rgba(0, 150, 255, 0.06);
+            padding: 5px;
             transition: all 0.4s ease;
+            filter: drop-shadow(0 0 8px rgba(0, 150, 255, 0.3));
         }
 
-        .app-card:hover .app-icon {
+        .app-card:hover .app-icon-img {
             border-color: #00dcff;
             background-color: rgba(0, 150, 255, 0.12);
-            box-shadow: 0 0 15px rgba(0, 220, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 220, 255, 0.3);
+            transform: scale(1.05);
         }
 
         .app-name {
@@ -257,14 +328,6 @@
             font-size: 14px;
             color: #94a3b8;
             line-height: 1.6;
-        }
-
-        .app-desc.coming-soon {
-            font-style: italic;
-            font-weight: 600;
-            color: #00dcff;
-            opacity: 0.8;
-            padding: 15px 0;
         }
 
         /* أزرار التحميل المريحة والسلسة */
@@ -329,26 +392,63 @@
             font-size: 13px;
             color: #475569;
         }
+
+        /* توافق الشاشات الصغيرة والهواتف */
+        @media (max-width: 768px) {
+            header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+            nav {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .hero-section {
+                padding-top: 200px;
+            }
+            .download-section {
+                padding: 60px 20px;
+            }
+        }
     </style>
 </head>
 <body>
 
     <header>
         <div class="brand">
-            <img src="ChatGPT_Image_21_يونيو_2026__12_30_56_ص-removebg-preview.ico" alt="Never Logo">
+            <img src="https://cdn.discordapp.com/attachments/1517901123372056727/1518402702143652032/67.png?ex=6a39ca36&is=6a3878b6&hm=e36fe1782ebf4bc993e43d3a01b19be9cdf9f7c4ed459671fcfa0a14e1dbb840&" alt="Never Logo">
             <div class="logo">Never</div>
         </div>
         <nav>
             <a href="#home" class="active" id="nav-home">القائمة الرئيسية</a>
             <a href="#downloads" id="nav-downloads">قائمة التحميل</a>
+            <a href="#warning" id="nav-warning">تحذير ⚠️</a>
         </nav>
     </header>
 
     <section id="home" class="hero-section">
-        <img src="ChatGPT_Image_21_يونيو_2026__12_30_56_ص-removebg-preview.ico" alt="Never Official Logo" class="hero-logo">
+        <img src="https://cdn.discordapp.com/attachments/1517901123372056727/1518402702143652032/67.png?ex=6a39ca36&is=6a3878b6&hm=e36fe1782ebf4bc993e43d3a01b19be9cdf9f7c4ed459671fcfa0a14e1dbb840&" alt="Never Official Logo" class="hero-logo">
         <h1 class="hero-title">منصة <span>Never</span> الرسمية</h1>
         <p class="hero-desc">المكان المعتمد لتحميل الأدوات والبرمجيات الحصرية بأعلى كفاءة وأمان مطلق ضد الحظر.</p>
-        <a href="#downloads" class="main-btn">تصفح قائمة التحميل</a>
+        <div class="hero-buttons">
+            <a href="#downloads" class="main-btn">تصفح قائمة التحميل</a>
+            <a href="#warning" class="main-btn warning-btn">إخلاء مسؤولية هامة</a>
+        </div>
+    </section>
+
+    <section id="warning" class="warning-section">
+        <div class="warning-box">
+            <div class="warning-title">
+                <span>⚠️</span> تنبيه وتحذير هام جداً
+            </div>
+            <div class="warning-text">
+                السلام عليكم ورحمة الله وبركاته. <br>
+                هذا هو الموقع الأساسي والوحيد لأدوات <strong>نيفر (Never Addons)</strong> ولا نملك أي موقع غيره. <br>
+                بناءً على ذلك، أي ملف أو أداة يتم تحميلها من خارج هذا الموقع، فنحن غير مسؤولين تماماً عن أي أضرار قد تلحق بك، سواء كانت خطيرة أو برمجيات خبيثة وتلغيم. وشكراً لكم على تفهمكم وثقتكم.
+            </div>
+        </div>
     </section>
 
     <section id="downloads" class="download-section">
@@ -358,7 +458,7 @@
             
             <div class="app-card">
                 <div class="app-card-top">
-                    <div class="app-icon">⚡</div>
+                    <img src="https://cdn.discordapp.com/attachments/1517901123372056727/1518398790225104946/3556-snip.png?ex=6a39c692&is=6a387512&hm=927977a71cf3f695f288745ec38ed87d68320505d52772ba2f132db8ef9f0429&" alt="Never AutoClicker Icon" class="app-icon-img">
                     <div class="app-name">Never AutoClicker</div>
                     <p class="app-desc">برنامج النقر التلقائي الاحترافي للكمبيوتر. يدعم تخصيص الأزرار والـ Hotkeys بشكل مستقل تماماً مع حماية كاملة وثبات فائق.</p>
                 </div>
@@ -367,20 +467,20 @@
 
             <div class="app-card">
                 <div class="app-card-top">
-                    <div class="app-icon">🔗</div>
+                    <img src="https://cdn.discordapp.com/attachments/1517901123372056727/1518399915024322720/917756-discord.png?ex=6a39c79e&is=6a38761e&hm=5ce26dfc32840a17af90df973bcb7f6e2b19c8af7e55fba25c388e611f5a2947&" alt="Discord Webhook Icon" class="app-icon-img">
                     <div class="app-name">Discord Webhook</div>
                     <p class="app-desc">أداة متطورة لإرسال البيانات والتحكم في إشعارات السيرفر تلقائياً عبر الـ Webhooks بتنسيق مخصص وإعدادات متكاملة.</p>
                 </div>
-                <a href="https://cdn.discordapp.com/attachments/1495552490932797492/1496269376305758361/Webhook_Never_v2.rar?ex=6a37b632&is=6a3664b2&hm=b2098568dfe0ab587785dc31f235b6d092e33be70fdb4400b61dc5f5bc237c3e&" target="_blank" class="download-btn">تحميل الأداة (RAR)</a>
+                <a href="https://www.mediafire.com/file/7col32imp23wjef/Webhook_Never_v2_%25283%2529.rar/file" target="_blank" class="download-btn">تحميل الأداة (RAR)</a>
             </div>
 
             <div class="app-card">
                 <div class="app-card-top">
-                    <div class="app-icon">🚀</div>
-                    <div class="app-name">تطبيق قادم 2</div>
-                    <p class="app-desc coming-soon">Coming Soon</p>
+                    <img src="https://cdn.discordapp.com/attachments/1517901123372056727/1518404511432179943/26254-directory.png?ex=6a39cbe6&is=6a387a66&hm=a3031a4b45ba5900eb12d618e5bc165da9a06c89ea9ff6a92e2ead090ece810c&" alt="Files Icon" class="app-icon-img">
+                    <div class="app-name">Files</div>
+                    <p class="app-desc">حزمة الملفات والملحقات الإضافية المعتمدة والآمنة والتابعة لمنصة نيفر الرسمية لضمان أفضل أداء للأدوات والبرمجيات.</p>
                 </div>
-                <a href="#" class="download-btn" onclick="return false;" style="opacity: 0.3; cursor: not-allowed;">قريباً..</a>
+                <a href="https://www.mediafire.com/file/mh8q27yw9a3vg6y/ff_%25281%2529.exe/file" target="_blank" class="download-btn">تحميل حزمة الملفات (EXE)</a>
             </div>
 
         </div>
@@ -396,21 +496,21 @@
     </footer>
 
     <script>
-        const nHome = document.getElementById('nav-home');
-        const nDown = document.getElementById('nav-downloads');
-        
-        nHome.addEventListener('click', () => {
-            nHome.classList.add('active');
-            nDown.classList.remove('active');
-        });
-        
-        nDown.addEventListener('click', () => {
-            nDown.classList.add('active');
-            nHome.classList.remove('active');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        // السلاسة عند الضغط على أزرار الهيدر العلوي
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(lnk => lnk.classList.remove('active'));
+                link.classList.add('active');
+            });
         });
 
+        // مراقبة سكرول الشاشة لتحديد حالة الأزرار بناء على القسم المفتوح
         window.addEventListener('scroll', () => {
             const header = document.querySelector('header');
+            
             if (window.scrollY > 50) {
                 header.style.backgroundColor = 'rgba(7, 7, 8, 0.85)';
                 header.style.padding = '10px 50px';
@@ -418,6 +518,21 @@
                 header.style.backgroundColor = 'rgba(10, 10, 12, 0.7)';
                 header.style.padding = '15px 50px';
             }
+
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').includes(current)) {
+                    a.classList.add('active');
+                }
+            });
         });
     </script>
 
